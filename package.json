@@ -1,0 +1,32 @@
+{
+  "name": "react-redux-autosave",
+  "version": "1.0.0",
+  "description": "React + Redux + Forms autosave example",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eiriklv/react-redux-autosave.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eiriklv/react-redux-autosave/issues"
+  },
+  "dependencies": {
+    "babel-core": "^5.8.22",
+    "babel-loader": "^5.3.2",
+    "lodash": "^3.10.1",
+    "react": "0.13.x",
+    "react-redux": "1.0.x",
+    "redux": "1.0.x",
+    "redux-logger": "0.0.x",
+    "redux-thunk": "0.1.x",
+    "seamless-immutable": "3.0.x"
+  },
+  "devDependencies": {
+    "react-hot-loader": "1.2.x",
+    "webpack": "1.9.x",
+    "webpack-dev-server": "1.9.x"
+  }
+}
