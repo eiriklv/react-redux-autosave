@@ -67,10 +67,6 @@ export function saveData() {
   return (dispatch, getState) => {
     let state = getState();
 
-    if (!state.unsavedChanges) {
-      return null;
-    }
-
     dispatch(saveDataRequest());
     return save(state.data)
       .then(() => dispatch(saveDataSuccess()))
@@ -83,3 +79,4 @@ export function updateData(update) {
     dispatch(updateDataRequest(update));
   }
 }
+

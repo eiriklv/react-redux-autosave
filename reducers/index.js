@@ -11,7 +11,15 @@ import {
   UPDATE_DATA
 } from '../actions';
 
-export default function rootReducer(state = {}, action) {
+const defaultState = {
+  isSaving: false,
+  isLoading: false,
+  error: null,
+  data: {},
+  unsavedChanges: false
+}
+
+export default function rootReducer(state = defaultState, action) {
   switch (action.type) {
     case POPULATE_DATA_REQUEST:
       return _.assign({}, state, {
@@ -20,7 +28,6 @@ export default function rootReducer(state = {}, action) {
     case POPULATE_DATA_SUCCESS:
       return _.assign({}, state, {
         isLoading: false,
-        error: null,
         data: action.data
       });
     case POPULATE_DATA_ERROR:
@@ -29,8 +36,7 @@ export default function rootReducer(state = {}, action) {
       });
     case SAVE_DATA_REQUEST:
       return _.assign({}, state, {
-        isSaving: true,
-        error: null
+        isSaving: true
       });
     case SAVE_DATA_SUCCESS:
       return _.assign({}, state, {

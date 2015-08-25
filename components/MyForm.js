@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react';
 
 export default class MyForm extends Component {
   componentDidUpdate() {
-    const { save, unsavedChanges } = this.props;
-    if (unsavedChanges) save();
+    const { save } = this.props;
+
+    if (this.saveTimeout) clearTimeout(this.saveTimeout);
+    this.saveTimeout = setTimeout(save, 1000);
   }
 
   render() {
@@ -13,7 +15,8 @@ export default class MyForm extends Component {
       update,
       refresh,
       data,
-      isSaving
+      isSaving,
+      unsavedChanges
     } = this.props;
 
     return (

@@ -25,9 +25,15 @@ class App extends Component {
   }
 
   saveData() {
-    const { dispatch, isSaving } = this.props;
-    if (isSaving) return;
-    dispatch(saveData());
+    const {
+      dispatch,
+      isSaving,
+      unsavedChanges
+    } = this.props;
+    
+    if (!isSaving && unsavedChanges) {
+      dispatch(saveData());
+    }
   }
 
   refreshData() {
