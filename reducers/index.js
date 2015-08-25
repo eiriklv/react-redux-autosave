@@ -2,10 +2,10 @@
 import _ from 'lodash';
 
 import {
-  POPULATE_DATA,
+  POPULATE_DATA_REQUEST,
   POPULATE_DATA_SUCCESS,
   POPULATE_DATA_ERROR,
-  SAVE_DATA,
+  SAVE_DATA_REQUEST,
   SAVE_DATA_SUCCESS,
   SAVE_DATA_ERROR,
   UPDATE_DATA
@@ -13,7 +13,7 @@ import {
 
 export default function rootReducer(state = {}, action) {
   switch (action.type) {
-    case POPULATE_DATA:
+    case POPULATE_DATA_REQUEST:
       return _.assign({}, state, {
         isLoading: true
       });
@@ -27,7 +27,7 @@ export default function rootReducer(state = {}, action) {
       return _.assign({}, state, {
         error: action.error,
       });
-    case SAVE_DATA:
+    case SAVE_DATA_REQUEST:
       return _.assign({}, state, {
         isSaving: true,
         error: null

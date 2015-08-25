@@ -1,17 +1,16 @@
 import { fetch, save } from '../services/api';
 
-export const POPULATE_DATA = 'POPULATE_DATA';
+export const POPULATE_DATA_REQUEST = 'POPULATE_DATA_REQUEST';
 export const POPULATE_DATA_SUCCESS = 'POPULATE_DATA_SUCCESS';
 export const POPULATE_DATA_ERROR = 'POPULATE_DATA_ERROR';
-export const SAVE_DATA = 'SAVE_DATA';
+export const SAVE_DATA_REQUEST = 'SAVE_DATA_REQUEST';
 export const SAVE_DATA_SUCCESS = 'SAVE_DATA_SUCCESS';
 export const SAVE_DATA_ERROR = 'SAVE_DATA_ERROR';
 export const UPDATE_DATA = 'UPDATE_DATA';
 
-
-function populateDataAttempt() {
+function populateDataRequest() {
   return {
-    type: POPULATE_DATA
+    type: POPULATE_DATA_REQUEST
   };
 }
 
@@ -29,9 +28,9 @@ function populateDataError(error) {
   };
 }
 
-function saveDataAttempt() {
+function saveDataRequest() {
   return {
-    type: SAVE_DATA
+    type: SAVE_DATA_REQUEST
   };
 }
 
@@ -48,7 +47,7 @@ function saveDataError(error) {
   };
 }
 
-function updateDataAttempt(update) {
+function updateDataRequest(update) {
   return {
     type: UPDATE_DATA,
     update
@@ -57,7 +56,7 @@ function updateDataAttempt(update) {
 
 export function populateData() {
   return (dispatch) => {
-    dispatch(populateDataAttempt());
+    dispatch(populateDataRequest());
     return fetch()
       .then((data) => dispatch(populateDataSuccess(data)))
       .catch((error) => dispatch(populateDataError(error)))
@@ -66,8 +65,14 @@ export function populateData() {
 
 export function saveData() {
   return (dispatch, getState) => {
-    dispatch(saveDataAttempt());
-    return !getState().unsavedChanges ? null : save(getState().data)
+    let state = getState();
+
+    if (!state.unsavedChanges) {
+      return null;
+    }
+
+    dispatch(saveDataRequest());
+    return save(state.data)
       .then(() => dispatch(saveDataSuccess()))
       .catch((error) => dispatch(saveDataError(error)))
   }
@@ -75,6 +80,6 @@ export function saveData() {
 
 export function updateData(update) {
   return (dispatch) => {
-    dispatch(updateDataAttempt(update));
+    dispatch(updateDataRequest(update));
   }
 }

@@ -1,11 +1,17 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { populateData, saveData, updateData } from '../actions';
+
 import MyForm from '../components/MyForm';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 
-class AsyncApp extends Component {
+import {
+  populateData,
+  saveData,
+  updateData
+} from '../actions';
+
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -50,6 +56,7 @@ class AsyncApp extends Component {
 
     return (
       <MyForm 
+        title='My awesome form'
         data={this.props.data}
         isSaving={this.props.isSaving}
         unsavedChanges={this.props.unsavedChanges}
@@ -61,10 +68,10 @@ class AsyncApp extends Component {
   }
 }
 
-AsyncApp.propTypes = {};
+App.propTypes = {};
 
 function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps)(AsyncApp);
+export default connect(mapStateToProps)(App);
