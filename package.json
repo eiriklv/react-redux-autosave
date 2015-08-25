@@ -24,7 +24,8 @@
     "redux": "1.0.x",
     "redux-logger": "0.0.x",
     "redux-thunk": "0.1.x",
-    "seamless-immutable": "3.0.x"
+    "seamless-immutable": "3.0.x",
+    "validator": "^4.0.5"
   },
   "devDependencies": {
     "react-hot-loader": "1.2.x",
