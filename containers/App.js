@@ -30,7 +30,7 @@ class App extends Component {
       isSaving,
       unsavedChanges
     } = this.props;
-    
+
     if (!isSaving && unsavedChanges) {
       dispatch(saveData());
     }
@@ -43,29 +43,35 @@ class App extends Component {
 
   updateData(field, event) {
     const { dispatch } = this.props;
-    
+
     dispatch(updateData({
       [field]: event.target.value
     }));
   }
 
   render () {
-    const { dispatch } = this.props;
+    const {
+      error,
+      isLoading,
+      isSaving,
+      unsavedChanges,
+      data
+    } = this.props;
 
-    if (this.props.error) {
-      return <ErrorMessage error={this.props.error} />
+    if (error) {
+      return <ErrorMessage error={error} />
     }
 
-    if (this.props.isLoading) {
+    if (isLoading) {
       return <LoadingSpinner />
     }
 
     return (
-      <MyForm 
+      <MyForm
         title='My awesome form'
-        data={this.props.data}
-        isSaving={this.props.isSaving}
-        unsavedChanges={this.props.unsavedChanges}
+        data={data}
+        isSaving={isSaving}
+        unsavedChanges={unsavedChanges}
         refresh={this.refreshData}
         save={this.saveData}
         update={this.updateData}

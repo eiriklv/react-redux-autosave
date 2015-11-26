@@ -28,17 +28,17 @@ export default class MyForm extends Component {
           <label htmlFor=''>Enter your first name: </label>
           <input
             style={{
-              backgroundColor: validator.contains(this.props.data.firstname, 'Eirik') ?
+              backgroundColor: validator.contains(data.firstname, 'Eirik') ?
                 'green' :
                 'red'
             }}
             id='firstname'
             name='firstname'
             type='text'
-            value={this.props.data.firstname}
+            value={data.firstname}
             onChange={update.bind(null, 'firstname')}
           />
-          {!validator.contains(this.props.data.firstname, 'Eirik') && (
+          {!validator.contains(data.firstname, 'Eirik') && (
             <span>ugyldig!</span>
           )}
         </div>
@@ -46,7 +46,7 @@ export default class MyForm extends Component {
           <label htmlFor=''>Enter your last name: </label>
           <input
             style={{
-              backgroundColor: validator.contains(this.props.data.lastname, 'Vullum') ?
+              backgroundColor: validator.contains(data.lastname, 'Vullum') ?
                 'green' :
                 'red'
             }}
@@ -56,7 +56,7 @@ export default class MyForm extends Component {
             value={this.props.data.lastname}
             onChange={update.bind(null, 'lastname')}
           />
-          {!validator.contains(this.props.data.lastname, 'Vullum') && (
+          {!validator.contains(data.lastname, 'Vullum') && (
             <span>ugyldig!</span>
           )}
         </div>
@@ -64,7 +64,7 @@ export default class MyForm extends Component {
           <label htmlFor=''>Enter a message: </label>
           <input
             style={{
-              backgroundColor: validator.contains(this.props.data.message, 'hei') ?
+              backgroundColor: validator.contains(data.message, 'hei') ?
                 'green' :
                 'red'
             }}

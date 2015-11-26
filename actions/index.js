@@ -57,6 +57,7 @@ function updateDataRequest(update) {
 export function populateData() {
   return (dispatch) => {
     dispatch(populateDataRequest());
+
     return fetch()
       .then((data) => dispatch(populateDataSuccess(data)))
       .catch((error) => dispatch(populateDataError(error)))
@@ -68,6 +69,7 @@ export function saveData() {
     let state = getState();
 
     dispatch(saveDataRequest());
+    
     return save(state.data)
       .then(() => dispatch(saveDataSuccess()))
       .catch((error) => dispatch(saveDataError(error)))
@@ -79,4 +81,3 @@ export function updateData(update) {
     dispatch(updateDataRequest(update));
   }
 }
-
